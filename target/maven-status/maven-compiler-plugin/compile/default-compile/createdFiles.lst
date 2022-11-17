@@ -1,8 +1,11 @@
-com\mycompany\lfb2\SrsBlock.class
+com\mycompany\lfb2\Author.class
+com\mycompany\lfb2\Status.class
 com\mycompany\lfb2\Property.class
+com\mycompany\lfb2\IssueService.class
+com\mycompany\lfb2\SrsBlock.class
+com\mycompany\lfb2\resources\AssignedTo.class
 com\mycompany\lfb2\JakartaRestConfiguration.class
 com\mycompany\lfb2\User.class
-com\mycompany\lfb2\IssueService.class
 com\mycompany\lfb2\resources\JakartaEE9Resource.class
 com\mycompany\lfb2\Issue.class
 com\mycompany\lfb2\IssueServiceImpl.class
