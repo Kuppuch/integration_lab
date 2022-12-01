@@ -4,7 +4,6 @@
  */
 package com.mycompany.lfb2;
 
-import com.mycompany.lfb2.resources.AssignedTo;
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -21,14 +20,13 @@ public class Issue {
     Date created_at;
     Date start_at;
     Date due_date;
-    AssignedTo assigned_to;
-    Author author;
-    Status status;
-    SrsBlock SrsBlock;
+    //Author assigned_to;
+    //Author author;
+    String status;
+    String SrsBlock;
     int priority;
     int parent;
-    int id;
-    String text;
+    long id;
 
     public String getName() {
         return name;
@@ -75,39 +73,39 @@ public class Issue {
         this.due_date = due_date;
     }
 
-    public AssignedTo getAssigned_to() {
-        return assigned_to;
-    }
+//    public Author getAssigned_to() {
+//        return assigned_to;
+//    }
+//
+//    @XmlElement
+//    public void setAssigned_to(Author assigned_to) {
+//        this.assigned_to = assigned_to;
+//    }
+//
+//    public Author getAuthor() {
+//        return author;
+//    }
+//
+//    @XmlElement
+//    public void setAuthor(Author author) {
+//        this.author = author;
+//    }
 
-    @XmlElement
-    public void setAssigned_to(AssignedTo assigned_to) {
-        this.assigned_to = assigned_to;
-    }
-
-    public Author getAuthor() {
-        return author;
-    }
-
-    @XmlElement
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
     @XmlElement
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public SrsBlock getSrsBlock() {
+    public String getSrsBlock() {
         return SrsBlock;
     }
 
     @XmlElement
-    public void setSrsBlock(SrsBlock srsBlock) {
+    public void setSrsBlock(String srsBlock) {
         SrsBlock = srsBlock;
     }
 
@@ -129,21 +127,12 @@ public class Issue {
         this.parent = parent;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
     @XmlAttribute
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    @XmlElement
-    public void setText(String text) {
-        this.text = text;
     }
 }

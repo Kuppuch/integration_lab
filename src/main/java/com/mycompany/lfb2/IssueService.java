@@ -21,4 +21,11 @@ public interface IssueService {
 
     @WebMethod
     public Issue[] getAllIssues();
+    
+    @WebMethod
+    public boolean addIssue(Issue i);
+	
+    @WebMethod
+    public boolean deleteIssue(int id);
+	
 }

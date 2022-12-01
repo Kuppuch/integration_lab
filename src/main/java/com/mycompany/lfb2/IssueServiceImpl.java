@@ -4,14 +4,8 @@
  */
 package com.mycompany.lfb2;
 
+import jakarta.ejb.EJB;
 import jakarta.jws.WebService;
-import jakarta.xml.bind.JAXBContext;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,34 +13,31 @@ import java.util.List;
  */
 @WebService(endpointInterface = "com.mycompany.lfb2.IssueService")
 public class IssueServiceImpl implements IssueService {
-    private static Map issues = new HashMap();
-    //private static final String BOOKSTORE_XML = "src/main/resources/bookstore.xml";
-    private static final String ISSUE_XML = "src/main/resources/example.xml";
-
+    
+    @EJB
+    private IssueSessionBeanLocal bean;
 
     @Override
     public Issue getIssue(int id) {
-        return (Issue) issues.get(id);
+        return new Issue();
     }
 
     @Override
     public Issue[] getAllIssues() {
-        Issue[] issues = new Issue[10];
-        
-        Issue issue = new Issue();
-        try {
-            JAXBContext context = JAXBContext.newInstance(Issue.class);
-            jakarta.xml.bind.Marshaller m = context.createMarshaller();
-            jakarta.xml.bind.Unmarshaller u = context.createUnmarshaller();
+        List<Issue> issueList = this.bean.getIssues();
+        Issue[] issues = new Issue[issueList.size()];
+        Issue[] array = issueList.toArray(issues);
+        return array;
+    }
 
-            issue = (Issue) u.unmarshal(new File(ISSUE_XML));
-            issues[0] = issue;
-            System.out.println(issue.author.name);
-            System.out.println(issue.name);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        return issues;
+    @Override
+    public boolean addIssue(Issue i) {
+        bean.addIssue(i);
+        return true;
+    }
+
+    @Override
+    public boolean deleteIssue(int id) {
+        return false;
     }
 }

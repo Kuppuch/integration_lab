@@ -1,4 +1,4 @@
-package com.mycompany.lfb2.resources;
+package com.mycompany.lfb2;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
